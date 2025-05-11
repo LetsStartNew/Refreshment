@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,17 +56,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Updated brand colors based on a dark yellow palette
 				brand: {
-					yellow: '#D4AC0D', // Darker yellow for primary elements
-					gold: '#B7950B', // Gold for highlights
-					cream: '#FEF9E7', // Light cream for contrast
-					black: '#212121', // Charcoal for text
-					amber: '#F39C12', // Rich amber for accents
-					pale: '#F9E79F', // Pale yellow for light elements
-					dark: '#7D6608', // Dark mustard for depth
-					soft: '#F7DC6F', // Soft yellow for subtle elements
-					gray: '#7F8C8D', // Muted gray for secondary text
+					black: '#231f20', // Main black
+					pure: '#000000',  // Pure black
+					orange: '#ef8c22', // Main orange
+					green: '#046938', // Main green
 				}
 			},
 			fontFamily: {
