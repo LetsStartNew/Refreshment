@@ -25,7 +25,7 @@ const SignInPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  
+
   const form = useForm<SignInFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,7 +65,7 @@ const SignInPage = () => {
           redirectTo: `${window.location.origin}/profile`,
         },
       });
-      
+
       if (error) {
         toast.error(error.message);
       }
@@ -77,7 +77,7 @@ const SignInPage = () => {
 
   const handleForgotPassword = async () => {
     const email = form.getValues("email");
-    
+
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       toast.error("Please enter a valid email address first");
       return;
@@ -116,7 +116,7 @@ const SignInPage = () => {
             Sign in to your account to continue
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -138,7 +138,7 @@ const SignInPage = () => {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="password"
@@ -146,9 +146,9 @@ const SignInPage = () => {
                     <FormItem>
                       <div className="flex items-center justify-between">
                         <FormLabel>Password</FormLabel>
-                        <button 
-                          type="button" 
-                          onClick={handleForgotPassword} 
+                        <button
+                          type="button"
+                          onClick={handleForgotPassword}
                           className="text-sm text-brand-blue hover:underline"
                         >
                           Forgot password?
@@ -162,7 +162,7 @@ const SignInPage = () => {
                             {...field}
                             className="pr-10"
                           />
-                          <button 
+                          <button
                             type="button"
                             className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                             onClick={togglePasswordVisibility}
@@ -177,9 +177,10 @@ const SignInPage = () => {
                 />
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full bg-brand-blue hover:bg-brand-blue/90 flex items-center justify-center gap-2" 
+              <Button
+                variant="outline"
+                type="submit"
+                className="w-full mt-4  hover:bg-black text-white flex items-center justify-center gap-2"
                 disabled={isLoading}
               >
                 <LogIn className="h-5 w-5" />
@@ -188,20 +189,22 @@ const SignInPage = () => {
             </form>
           </Form>
 
+         
+
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <Separator className="w-full" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-muted-foreground">
+                <span className="px-2 bg-gray text-white">
                   Or continue with
                 </span>
               </div>
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-3">
-              <Button variant="outline" type="button" className="w-full" onClick={handleGoogleSignIn}>
+              <Button variant="outline" type="button" className="w-full hover:bg-black text-white" onClick={handleGoogleSignIn}>
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                   <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
                     <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z" />
@@ -215,7 +218,7 @@ const SignInPage = () => {
             </div>
           </div>
         </CardContent>
-        
+
         <CardFooter className="flex flex-col items-center">
           <p className="text-sm text-center text-gray-600 mt-2">
             Don't have an account?{" "}

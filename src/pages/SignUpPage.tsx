@@ -212,6 +212,7 @@ const SignUpPage = () => {
               </div>
 
               <Button 
+               variant="outline"
                 type="submit" 
                 className="w-full bg-brand-blue hover:bg-brand-blue/90 flex items-center justify-center gap-2"
                 disabled={isLoading}
@@ -228,14 +229,14 @@ const SignUpPage = () => {
                 <Separator className="w-full" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-muted-foreground">
+                <span className="px-2 bg-black text-muted-foreground">
                   Or continue with
                 </span>
               </div>
             </div>
 
             <div className="mt-6 grid grid-cols-1 gap-3">
-              <Button variant="outline" type="button" className="w-full" onClick={handleGoogleSignUp}>
+              <Button variant="outline" type="button" className="w-full hover:bg-brand-blue/90" onClick={handleGoogleSignUp}>
                 <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                   <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
                     <path fill="#4285F4" d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z" />
