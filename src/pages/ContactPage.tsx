@@ -111,8 +111,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Office Location</h3>
                       <p className="text-gray-600">
-                        123 Refreshment Street, Business District<br />
-                        City, State 10001
+                        Chennai, Tamil Nadu<br />
+                        600083
                       </p>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ const ContactPage = () => {
                       <h3 className="font-poppins font-medium text-lg mb-1">Phone Number</h3>
                       <p className="text-gray-600">
                         <a href="tel:+11234567890" className="hover:text-brand-blue transition-colors">
-                          +1 (123) 456-7890
+                          (+91) 7299396957
                         </a>
                       </p>
                     </div>
@@ -136,8 +136,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Email Address</h3>
                       <p className="text-gray-600">
-                        <a href="mailto:info@refreshco.com" className="hover:text-brand-blue transition-colors">
-                          info@refreshco.com
+                        <a href="mailto:refreshmentcompany1@gmail.com" className="hover:text-brand-blue transition-colors">
+                            refreshmentcompany1@gmail.com
                         </a>
                       </p>
                     </div>

@@ -94,19 +94,20 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 text-brand-blue mt-1 flex-shrink-0" />
                 <span className="text-gray-600">
-                  123 Refreshment Street, Business District, City, 10001
+                Chennai, Tamil Nadu<br />
+                600083
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 text-brand-blue flex-shrink-0" />
                 <a href="tel:+11234567890" className="text-gray-600 hover:text-brand-blue transition-colors">
-                  +1 (123) 456-7890
+                  (+91) 7299396957
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 text-brand-blue flex-shrink-0" />
                 <a href="mailto:info@refreshco.com" className="text-gray-600 hover:text-brand-blue transition-colors">
-                  info@refreshco.com
+                  refreshmentcompany1@gmail.com
                 </a>
               </li>
             </ul>
