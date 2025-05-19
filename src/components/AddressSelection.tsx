@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -20,37 +19,55 @@ export type Address = {
   isDefault?: boolean;
 };
 
-// Mock saved addresses
-const mockSavedAddresses: Address[] = [
-  {
-    id: '1',
-    name: 'Office',
-    phone: '9876543210',
-    street: '123 Tech Park, Anna Salai',
-    city: 'Chennai',
-    pincode: '600001',
-    landmark: 'Near Central Station',
-    isDefault: true
-  },
-  {
-    id: '2',
-    name: 'Conference Center',
-    phone: '9876543211',
-    street: '45 Convention Ave, T Nagar',
-    city: 'Chennai',
-    pincode: '600017',
-    landmark: 'Opposite to City Mall'
-  }
-];
-
 interface AddressSelectionProps {
   onAddressSelected: (address: Address) => void;
 }
 
 const AddressSelection = ({ onAddressSelected }: AddressSelectionProps) => {
-  const [savedAddresses] = useState<Address[]>(mockSavedAddresses);
+  const [savedAddresses, setSavedAddresses] = useState<Address[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
   const [addressSource, setAddressSource] = useState<'saved' | 'map' | 'manual'>('saved');
+
+  useEffect(() => {
+    const fetchAddresses = async () => {
+      const token = localStorage.getItem('authToken');
+      try {
+        const res = await fetch('http://localhost:5000/addresses/get',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth_key': token,
+      }
+    });
+        const data = await res.json();
+
+        if (Array.isArray(data)) {
+          const formatted = data.map(item => ({
+            id: item._id,
+            name: item.name,
+            phone: item.number, // map `number` to `phone`
+            street: item.street,
+            city: item.city,
+            pincode: item.pincode,
+            landmark: item.landmark,
+            isDefault: item.is_save,
+          }));
+          setSavedAddresses(formatted);
+        } else {
+          setSavedAddresses([]);
+        }
+      } catch (error) {
+        console.error('Failed to fetch addresses:', error);
+        toast.error("Failed to load saved addresses");
+        setSavedAddresses([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAddresses();
+  }, []);
 
   const handleSavedAddressSelect = (address: Address) => {
     setSelectedAddress(address);
@@ -106,11 +123,17 @@ const AddressSelection = ({ onAddressSelected }: AddressSelectionProps) => {
 
       <div className="mt-6 border rounded-lg p-4">
         {addressSource === 'saved' && (
-          <SavedAddressList 
-            addresses={savedAddresses} 
-            onSelect={handleSavedAddressSelect}
-            selectedAddressId={selectedAddress?.id}
-          />
+          loading ? (
+            <p>Loading saved addresses...</p>
+          ) : savedAddresses.length === 0 ? (
+            <p className="text-gray-500 text-sm">No saved addresses available.</p>
+          ) : (
+            <SavedAddressList 
+              addresses={savedAddresses} 
+              onSelect={handleSavedAddressSelect}
+              selectedAddressId={selectedAddress?.id}
+            />
+          )
         )}
         
         {addressSource === 'map' && (

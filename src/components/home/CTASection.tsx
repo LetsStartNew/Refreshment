@@ -15,7 +15,7 @@ const CTASection = () => {
           Perfect for branded gifts, team meetings, and bulk refreshment needs. Order now and make your event refreshing with our premium services.
         </p>
         <Link to="/order">
-          <Button size="lg" className="bg-white hover:bg-white/90 text-brand-maroon font-semibold">
+          <Button size="lg" className="bg-white hover:bg-white/90 text-brand-maroon text-black font-semibold">
             Order Now <ArrowRight className="ml-2" size={18} />
           </Button>
         </Link>

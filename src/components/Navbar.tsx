@@ -25,7 +25,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut, isLoading } = useAuth();
+ const { logout,authToken,username} = useAuth();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -43,7 +43,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await signOut();
+      await logout();
       toast.success("Signed out successfully");
       navigate('/');
       setIsMenuOpen(false);
@@ -76,7 +76,7 @@ const Navbar = () => {
           <Link to="/about" className="font-poppins font-medium hover:text-brand-blue transition-colors">About</Link>
           <Link to="/services" className="font-poppins font-medium hover:text-brand-blue transition-colors">Services</Link>
           <Link to="/contact" className="font-poppins font-medium hover:text-brand-blue transition-colors">Contact</Link>
-          {user && (
+          {username && (
             <>
               <Link to="/profile" className="font-poppins font-medium hover:text-brand-blue transition-colors">Profile</Link>
               <Link to="/vendor" className="font-poppins font-medium hover:text-brand-blue transition-colors flex items-center gap-1">
@@ -89,13 +89,13 @@ const Navbar = () => {
 
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          {!isLoading && (
-            user ? (
+          {
+            username ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm" className="flex items-center gap-2">
                     <User size={16} />
-                    {user.user_metadata.name || user.email}
+                    {username}
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -129,7 +129,7 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             )
-          )}
+          }
           <Link to="/order">
             <Button className="bg-brand-blue hover:bg-brand-blue/90 flex items-center gap-2">
               <ShoppingCart size={16} /> Pre-Order
@@ -138,7 +138,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-brand-darkGray" onClick={toggleMenu}>
+        <button className="md:hidden text-black" onClick={toggleMenu}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -175,7 +175,7 @@ const Navbar = () => {
             >
               Contact
             </Link>
-            {user && (
+            {username && (
               <>
                 <Link
                   to="/profile"
@@ -195,8 +195,8 @@ const Navbar = () => {
               </>
             )}
             <div className="flex flex-col space-y-2 pt-2 border-t">
-              {!isLoading && (
-                user ? (
+              {
+                username ? (
                   <>
                     <Button
                       variant="outline"
@@ -235,7 +235,7 @@ const Navbar = () => {
                     </Button>
                   </>
                 )
-              )}
+              }
               <Link to="/order" onClick={() => setIsMenuOpen(false)}>
                 <Button className="w-full bg-brand-blue hover:bg-brand-blue/90 justify-center flex items-center gap-2">
                   <ShoppingCart size={16} />

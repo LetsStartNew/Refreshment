@@ -22,6 +22,7 @@ import OrderTrackingPage from "./pages/OrderTrackingPage";
 import AdminDashboard from "./pages/AdminDashboard";
 import SignInPage from "./pages/SignInPage";
 import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -40,10 +41,10 @@ const App = () => (
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/order" element={<OrderPage />} />
+                <Route path="/order" element={  <ProtectedRoute><OrderPage /></ProtectedRoute>} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/signin" element={<SignInPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/profile" element={  <ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                 <Route path="/vendor" element={<VendorDashboard />} />
                 <Route path="/vendor-login" element={<VendorLogin />} />
                 <Route path="/vendor-signup" element={<VendorSignup />} />

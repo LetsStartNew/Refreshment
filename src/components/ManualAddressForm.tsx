@@ -23,9 +23,9 @@ interface ManualAddressFormProps {
 
 const formSchema = z.object({
   name: z.string().min(1, { message: 'Name is required' }),
-  phone: z.string()
-    .min(10, { message: 'Phone number must be at least 10 digits' })
-    .regex(/^[0-9]+$/, { message: 'Phone number must contain only digits' }),
+  number: z.string()
+    .min(10, { message: 'number number must be at least 10 digits' })
+    .regex(/^[0-9]+$/, { message: 'number number must contain only digits' }),
   street: z.string().min(1, { message: 'Street address is required' }),
   city: z.string().min(1, { message: 'City is required' }),
   pincode: z.string()
@@ -33,7 +33,7 @@ const formSchema = z.object({
     .max(6, { message: 'Pincode must be 6 digits' })
     .regex(/^[0-9]+$/, { message: 'Pincode must contain only digits' }),
   landmark: z.string().optional(),
-  saveAddress: z.boolean().default(false)
+  is_save: z.boolean().default(false)
 });
 
 const ManualAddressForm = ({ onSubmit }: ManualAddressFormProps) => {
@@ -41,27 +41,51 @@ const ManualAddressForm = ({ onSubmit }: ManualAddressFormProps) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      phone: '',
+      number: '',
       street: '',
-      city: 'Chennai',
+      city: 'chennai',
       pincode: '',
       landmark: '',
-      saveAddress: false
+      is_save: true
     }
   });
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    const address: Address = {
-      name: values.name,
-      phone: values.phone,
-      street: values.street,
-      city: values.city,
-      pincode: values.pincode,
-      landmark: values.landmark || undefined
-    };
-    
-    onSubmit(address);
+  const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+  const address: Address = {
+    name: values.name,
+    number: values.number,
+    street: values.street,
+    city: values.city,
+    pincode: values.pincode,
+    landmark: values.landmark || undefined,
+    is_save: values.is_save,
   };
+  try {
+    const token = localStorage.getItem('authToken');
+
+    const response = await fetch('http://localhost:5000/addresses', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'auth_key': token,
+      },
+      body: JSON.stringify(address),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to save address');
+    }
+
+    const result = await response.json();
+    console.log('Address submitted successfully:', result);
+
+    // Optionally trigger the parent callback
+    onSubmit(address);
+  } catch (error) {
+    console.error('Error submitting address:', error);
+    // You can show an error toast or alert here
+  }
+};
 
   return (
     <div className="space-y-4">
@@ -86,10 +110,10 @@ const ManualAddressForm = ({ onSubmit }: ManualAddressFormProps) => {
             
             <FormField
               control={form.control}
-              name="phone"
+              name="number"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
+                  <FormLabel>number Number</FormLabel>
                   <FormControl>
                     <Input placeholder="Contact number" {...field} />
                   </FormControl>
@@ -159,7 +183,7 @@ const ManualAddressForm = ({ onSubmit }: ManualAddressFormProps) => {
           
           <FormField
             control={form.control}
-            name="saveAddress"
+            name="is_save"
             render={({ field }) => (
               <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                 <FormControl>

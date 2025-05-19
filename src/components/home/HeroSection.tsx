@@ -22,7 +22,7 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to="/order">
-                <Button size="lg" className="bg-white hover:bg-white/90 text-brand-maroon font-semibold">
+                <Button size="lg" className="bg-white hover:bg-white/90 text-brand-maroon text-black font-semibold">
                   Order Now <ArrowRight className="ml-2" size={18} />
                 </Button>
               </Link>
