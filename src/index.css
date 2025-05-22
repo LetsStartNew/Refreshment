@@ -9,7 +9,7 @@
     --black: 231 11% 12%; /* #231f20 */
     --pure: 0 0% 0%;      /* #000000 */
     --orange: 32 85% 54%; /* #ef8c22 */
-    --green: 153 93% 21%; /* #046938 */
+    --white: 0 0% 100%;   /* #ffffff */
 
     --background: var(--black);
     --foreground: 0 0% 100%; /* white for contrast */
@@ -23,14 +23,14 @@
     --primary: var(--orange);
     --primary-foreground: var(--black);
 
-    --secondary: var(--green);
-    --secondary-foreground: 0 0% 100%;
+    --secondary: var(--white);
+    --secondary-foreground: var(--black);
 
     --muted: 0 0% 60%; /* gray for muted */
     --muted-foreground: 0 0% 100%;
 
-    --accent: var(--green);
-    --accent-foreground: 0 0% 100%;
+    --accent: var(--orange);
+    --accent-foreground: var(--black);
 
     --destructive: 0 84% 60%; /* standard red */
     --destructive-foreground: 0 0% 100%;

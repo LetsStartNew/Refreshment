@@ -140,7 +140,7 @@ const SignInPage = () => {
               <Button
                 variant="outline"
                 type="submit"
-                className="w-full mt-4 hover:bg-black text-white flex items-center justify-center gap-2"
+                className="w-full mt-4 hover:bg-black hover:text-white text-white flex items-center justify-center gap-2"
                 disabled={isLoading}
               >
                 <LogIn className="h-5 w-5" />

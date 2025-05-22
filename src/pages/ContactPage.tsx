@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -26,7 +25,7 @@ const ContactPage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-brand-blue text-white">
+      <section className="bg-brand-orange text-white">
         <div className="container-custom section-padding">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-poppins font-bold text-4xl md:text-5xl mb-6">Contact Us</h1>
@@ -92,7 +91,7 @@ const ContactPage = () => {
                       className="w-full"
                     />
                   </div>
-                  <Button type="submit" className="w-full bg-brand-blue hover:bg-brand-blue/90">
+                  <Button type="submit" className="w-full bg-brand-orange hover:bg-brand-orange/90">
                     <Send className="mr-2" size={18} /> Send Message
                   </Button>
                 </form>
@@ -105,8 +104,8 @@ const ContactPage = () => {
                 <h2 className="font-poppins font-semibold text-2xl mb-6">Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <div className="bg-brand-blue/10 rounded-full p-3 mr-4">
-                      <MapPin className="text-brand-blue" size={24} />
+                    <div className="bg-brand-orange/10 rounded-full p-3 mr-4">
+                      <MapPin className="text-brand-orange" size={24} />
                     </div>
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Office Location</h3>
@@ -117,34 +116,34 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-blue/10 rounded-full p-3 mr-4">
-                      <Phone className="text-brand-blue" size={24} />
+                    <div className="bg-brand-orange/10 rounded-full p-3 mr-4">
+                      <Phone className="text-brand-orange" size={24} />
                     </div>
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Phone Number</h3>
                       <p className="text-gray-600">
-                        <a href="tel:+11234567890" className="hover:text-brand-blue transition-colors">
+                        <a href="tel:+11234567890" className="hover:text-brand-orange transition-colors">
                           (+91) 7299396957
                         </a>
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-blue/10 rounded-full p-3 mr-4">
-                      <Mail className="text-brand-blue" size={24} />
+                    <div className="bg-brand-orange/10 rounded-full p-3 mr-4">
+                      <Mail className="text-brand-orange" size={24} />
                     </div>
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Email Address</h3>
                       <p className="text-gray-600">
-                        <a href="mailto:refreshmentcompany1@gmail.com" className="hover:text-brand-blue transition-colors">
+                        <a href="mailto:refreshmentcompany1@gmail.com" className="hover:text-brand-orange transition-colors">
                             refreshmentcompany1@gmail.com
                         </a>
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="bg-brand-blue/10 rounded-full p-3 mr-4">
-                      <Clock className="text-brand-blue" size={24} />
+                    <div className="bg-brand-orange/10 rounded-full p-3 mr-4">
+                      <Clock className="text-brand-orange" size={24} />
                     </div>
                     <div>
                       <h3 className="font-poppins font-medium text-lg mb-1">Business Hours</h3>

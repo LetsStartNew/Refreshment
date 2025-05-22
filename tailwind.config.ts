@@ -60,7 +60,7 @@ export default {
 					black: '#231f20', // Main black
 					pure: '#000000',  // Pure black
 					orange: '#ef8c22', // Main orange
-					green: '#046938', // Main green
+					white: '#ffffff', // Main white
 				}
 			},
 			fontFamily: {
